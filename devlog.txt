@@ -1,0 +1,8 @@
+Monday (12/14/20)
+Finally got around to making a green eggs and ham compressor. The way it works currently is just by mapping frequently
+used words and phrases to arbitrary characters. Next I need to implement the ability decompress the compressed file.
+Maybe for jokes since it technically follows the rules, I'll make a 0-byte compression mode since there's nothing stopping
+me from putting green eggs and ham into the source code :)
+
+Plan for tomorrow is to start and finish the decompressor for green eggs and ham, and then move onto a universal text
+compressor. Or maybe I'll make a universal file compressor??
