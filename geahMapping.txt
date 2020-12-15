@@ -1,0 +1,60 @@
+CHARACTER MAPPING
+
+1 -- green eggs and ham\nI do not like them
+2 -- I do not like them
+6 -- Would you like them
+= -- And I will eat
++ -- And I would eat
+% -- I would not could not
+$ -- I will not eat them
+` -- I do not like
+# -- I would not eat
+* -- green eggs and ham
+Ú -- in the dark
+§ -- in the rain
+? -- let me be
+4 -- them Sam-I-am
+{ -- you may
+] -- You may
+Ä -- I would
+7 -- Would you
+8 -- Could you
+9 -- would you
+0 -- could you
+^ -- A train
+& -- a train
+♣ -- I like
+○ -- so good
+▓ -- Thank you
+® -- green eggs
+~ -- in a
+! -- with a
+5 -- like them
+3 -- them
+( -- fox
+) -- box
+ƒ -- mouse
+ª -- house
+£ -- Sam-I-am
+. -- eat
+ô -- Eat
+ó -- Try
+> -- anywhere
+< -- here
+/ -- there
+@ -- not
+_ -- Not
+\ -- would
+| -- could
+; -- goat
+: -- boat
+" -- Sam
+' -- car
+[ -- tree
+◘ -- You
+• -- you
+╚ -- will
+Ì -- that
+▀ -- That
+┌ -- say
+î -- like

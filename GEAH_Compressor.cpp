@@ -34,6 +34,7 @@ void GEAH_Compressor::compress(std::string fileName)
 		{
 			std::string line = file->at(i);
 			bool bMadeReplacement=false;
+			// I would like to apologize for the next 268 lines. I'm truly sorry
 			// refer to geahMapping.txt
 			// there are many occurrences of 'green eggs and ham' being followed by 'I do not like them' on the next line
 			if(line.find("green eggs and ham")!=std::string::npos&&
@@ -61,11 +62,6 @@ void GEAH_Compressor::compress(std::string fileName)
 			if(line.find("I will not eat them")!=std::string::npos)
 			{
 				findAndReplace(line,"I will not eat them","$");
-				bMadeReplacement=true;
-			}
-			if(line.find("And I will eat")!=std::string::npos)
-			{
-				findAndReplace(line,"And I will eat","=");
 				bMadeReplacement=true;
 			}
 			if(line.find("And I will eat")!=std::string::npos)
@@ -303,6 +299,47 @@ void GEAH_Compressor::compress(std::string fileName)
 				findAndReplace(line,"you","•");
 				bMadeReplacement=true;
 			}
+			if(line.find("will")!=std::string::npos)
+			{
+				findAndReplace(line,"will","╚");
+				bMadeReplacement=true;
+			}
+			if(line.find("that")!=std::string::npos)
+			{
+				findAndReplace(line,"that","Ì");
+				bMadeReplacement=true;
+			}
+			if(line.find("That")!=std::string::npos)
+			{
+				findAndReplace(line,"That","▀");
+				bMadeReplacement=true;
+			}
+			if(line.find("say")!=std::string::npos)
+			{
+				findAndReplace(line,"say","┌");
+				bMadeReplacement=true;
+			}
+			if(line.find("like")!=std::string::npos)
+			{
+				findAndReplace(line,"like","î");
+				bMadeReplacement=true;
+			}
+			if(line.find("and")!=std::string::npos)
+			{
+				findAndReplace(line,"and","├");
+				bMadeReplacement=true;
+			}
+			if(line.find("And")!=std::string::npos)
+			{
+				findAndReplace(line,"And","¨");
+				bMadeReplacement=true;
+			}
+			if(line.find("see")!=std::string::npos)
+			{
+				findAndReplace(line,"see","▄");
+				bMadeReplacement=true;
+			}
+
 			if(bMadeReplacement)
 			{
 				file->at(i)=line;
@@ -310,6 +347,335 @@ void GEAH_Compressor::compress(std::string fileName)
 			}
 			else out->push_back(line);
 		}
+		compressedFile=out;
+		*file=backup;
+		ReadAndWrite::writeFile(out,fileName);
+	}
+}
+
+void GEAH_Compressor::extract(std::string fileName)
+{
+	if(file!=nullptr)
+	{
+		std::vector<std::string> backup = *file;
+		auto* out = new std::vector<std::string>;
+		for(int i=0;i<file->size();i++)
+		{
+			std::string line = file->at(i);
+			bool bMadeReplacement=false;
+			// I would like to apologize again for the next 268 lines. I'm truly sorry. I was tired and I really should've
+			// parsed a config file, but here we are :)
+			// refer to geahMapping.txt
+			// there are many occurrences of 'green eggs and ham' being followed by 'I do not like them' on the next line
+			if(line.find('1')!=std::string::npos)
+			{
+				findAndReplace(line,"1","green eggs and ham");
+				findAndReplace(file->at(i+1),"","I do not like them");
+				bMadeReplacement=true;
+			}
+			if(line.find('2')!=std::string::npos)
+			{
+				findAndReplace(line,"2","I do not like them");
+				bMadeReplacement=true;
+			}
+			if(line.find('6')!=std::string::npos)
+			{
+				findAndReplace(line,"6","Would you like them");
+				bMadeReplacement=true;
+			}
+			if(line.find('%')!=std::string::npos)
+			{
+				findAndReplace(line,"%","I would not could not");
+				bMadeReplacement=true;
+			}
+			if(line.find('$')!=std::string::npos)
+			{
+				findAndReplace(line,"$","I will not eat them");
+				bMadeReplacement=true;
+			}
+			if(line.find('=')!=std::string::npos)
+			{
+				findAndReplace(line,"=","And I will eat");
+				bMadeReplacement=true;
+			}
+			if(line.find('+')!=std::string::npos)
+			{
+				findAndReplace(line,"+","And I would eat");
+				bMadeReplacement=true;
+			}
+			if(line.find('`')!=std::string::npos)
+			{
+				findAndReplace(line,"`","I do not like");
+				bMadeReplacement=true;
+			}
+			if(line.find('*')!=std::string::npos)
+			{
+				findAndReplace(line,"*","green eggs and ham");
+				bMadeReplacement=true;
+			}
+			if(line.find("Ú")!=std::string::npos)
+			{
+				findAndReplace(line,"Ú","in the dark");
+				bMadeReplacement=true;
+			}
+			if(line.find("§")!=std::string::npos)
+			{
+				findAndReplace(line,"§","in the rain");
+				bMadeReplacement=true;
+			}
+			if(line.find('?')!=std::string::npos)
+			{
+				findAndReplace(line,"?","let me be");
+				bMadeReplacement=true;
+			}
+			if(line.find('4')!=std::string::npos)
+			{
+				findAndReplace(line,"4","them Sam-I-am");
+				bMadeReplacement=true;
+			}
+			if(line.find('7')!=std::string::npos)
+			{
+				findAndReplace(line,"7","Would you");
+				bMadeReplacement=true;
+			}
+			if(line.find('8')!=std::string::npos)
+			{
+				findAndReplace(line,"8","Could you");
+				bMadeReplacement=true;
+			}
+			if(line.find('9')!=std::string::npos)
+			{
+				findAndReplace(line,"9","would you");
+				bMadeReplacement=true;
+			}
+			if(line.find('0')!=std::string::npos)
+			{
+				findAndReplace(line,"0","could you");
+				bMadeReplacement=true;
+			}
+			if(line.find(']')!=std::string::npos)
+			{
+				findAndReplace(line,"]","You may");
+				bMadeReplacement=true;
+			}
+			if(line.find('{')!=std::string::npos)
+			{
+				findAndReplace(line,"{","you may");
+				bMadeReplacement=true;
+			}
+			if(line.find('^')!=std::string::npos)
+			{
+				findAndReplace(line,"^","A train");
+				bMadeReplacement=true;
+			}
+			if(line.find('&')!=std::string::npos)
+			{
+				findAndReplace(line,"&","a train");
+				bMadeReplacement=true;
+			}
+			if(line.find('~')!=std::string::npos)
+			{
+				findAndReplace(line,"~","in a");
+				bMadeReplacement=true;
+			}
+			if(line.find('!')!=std::string::npos)
+			{
+				findAndReplace(line,"!","with a");
+				bMadeReplacement=true;
+			}
+			if(line.find('5')!=std::string::npos)
+			{
+				findAndReplace(line,"5","like them");
+				bMadeReplacement=true;
+			}
+			if(line.find("▓")!=std::string::npos)
+			{
+				findAndReplace(line,"▓","Thank you");
+				bMadeReplacement=true;
+			}
+			if(line.find("®")!=std::string::npos)
+			{
+				findAndReplace(line,"®","green eggs");
+				bMadeReplacement=true;
+			}
+			if(line.find("♣")!=std::string::npos)
+			{
+				findAndReplace(line,"♣","I like");
+				bMadeReplacement=true;
+			}
+			if(line.find("Ä")!=std::string::npos)
+			{
+				findAndReplace(line,"Ä","I would");
+				bMadeReplacement=true;
+			}
+			if(line.find("○")!=std::string::npos)
+			{
+				findAndReplace(line,"○","so good");
+				bMadeReplacement=true;
+			}
+			if(line.find('3')!=std::string::npos)
+			{
+				findAndReplace(line,"3","them");
+				bMadeReplacement=true;
+			}
+			if(line.find('(')!=std::string::npos)
+			{
+				findAndReplace(line,"(","fox");
+				bMadeReplacement=true;
+			}
+			if(line.find(')')!=std::string::npos)
+			{
+				findAndReplace(line,")","box");
+				bMadeReplacement=true;
+			}
+			if(line.find("ô")!=std::string::npos)
+			{
+				findAndReplace(line,"ô","Eat");
+				bMadeReplacement=true;
+			}
+			if(line.find("ó")!=std::string::npos)
+			{
+				findAndReplace(line,"ó","Try");
+				bMadeReplacement=true;
+			}
+			if(line.find('@')!=std::string::npos)
+			{
+				findAndReplace(line,"@","not");
+				bMadeReplacement=true;
+			}
+			if(line.find('_')!=std::string::npos)
+			{
+				findAndReplace(line,"_","Not");
+				bMadeReplacement=true;
+			}
+			if(line.find("£")!=std::string::npos)
+			{
+				findAndReplace(line,"£","Sam-I-am");
+				bMadeReplacement=true;
+			}
+			if(line.find("ƒ")!=std::string::npos)
+			{
+				findAndReplace(line,"ƒ","mouse");
+				bMadeReplacement=true;
+			}
+			if(line.find("ª")!=std::string::npos)
+			{
+				findAndReplace(line,"ª","house");
+				bMadeReplacement=true;
+			}
+			if(line.find('.')!=std::string::npos)
+			{
+				findAndReplace(line,".","eat");
+				bMadeReplacement=true;
+			}
+			if(line.find('>')!=std::string::npos)
+			{
+				findAndReplace(line,">","anywhere");
+				bMadeReplacement=true;
+			}
+			if(line.find('<')!=std::string::npos)
+			{
+				findAndReplace(line,"<","here");
+				bMadeReplacement=true;
+			}
+			if(line.find('/')!=std::string::npos)
+			{
+				findAndReplace(line,"/","there");
+				bMadeReplacement=true;
+			}
+			if(line.find('\\')!=std::string::npos)
+			{
+				findAndReplace(line,"\\","would");
+				bMadeReplacement=true;
+			}
+			if(line.find('|')!=std::string::npos)
+			{
+				findAndReplace(line,"|","could");
+				bMadeReplacement=true;
+			}
+			if(line.find(';')!=std::string::npos)
+			{
+				findAndReplace(line,";","goat");
+				bMadeReplacement=true;
+			}
+			if(line.find(':')!=std::string::npos)
+			{
+				findAndReplace(line,":","boat");
+				bMadeReplacement=true;
+			}
+			if(line.find('\"')!=std::string::npos)
+			{
+				findAndReplace(line,"\"","Sam");
+				bMadeReplacement=true;
+			}
+			if(line.find('\'')!=std::string::npos)
+			{
+				findAndReplace(line,"\'","car");
+				bMadeReplacement=true;
+			}
+			if(line.find('[')!=std::string::npos)
+			{
+				findAndReplace(line,"[","tree");
+				bMadeReplacement=true;
+			}
+			if(line.find("◘")!=std::string::npos)
+			{
+				findAndReplace(line,"◘","You");
+				bMadeReplacement=true;
+			}
+			if(line.find("•")!=std::string::npos)
+			{
+				findAndReplace(line,"•","you");
+				bMadeReplacement=true;
+			}
+			if(line.find("╚")!=std::string::npos)
+			{
+				findAndReplace(line,"╚","will");
+				bMadeReplacement=true;
+			}
+			if(line.find("Ì")!=std::string::npos)
+			{
+				findAndReplace(line,"Ì","that");
+				bMadeReplacement=true;
+			}
+			if(line.find("▀")!=std::string::npos)
+			{
+				findAndReplace(line,"▀","That");
+				bMadeReplacement=true;
+			}
+			if(line.find("┌")!=std::string::npos)
+			{
+				findAndReplace(line,"┌","say");
+				bMadeReplacement=true;
+			}
+			if(line.find("î")!=std::string::npos)
+			{
+				findAndReplace(line,"î","like");
+				bMadeReplacement=true;
+			}
+			if(line.find("├")!=std::string::npos)
+			{
+				findAndReplace(line,"├","and");
+				bMadeReplacement=true;
+			}
+			if(line.find("¨")!=std::string::npos)
+			{
+				findAndReplace(line,"¨","And");
+				bMadeReplacement=true;
+			}
+			if(line.find("▄")!=std::string::npos)
+			{
+				findAndReplace(line,"▄","see");
+				bMadeReplacement=true;
+			}
+			if(bMadeReplacement)
+			{
+				file->at(i)=line;
+				i--;
+			}
+			else out->push_back(line);
+		}
+		out->push_back("");
 		compressedFile=out;
 		*file=backup;
 		ReadAndWrite::writeFile(out,fileName);

@@ -23,6 +23,7 @@ public:
 	std::string charCount();
 
 	virtual void compress(std::string fileName)=0;
+	virtual void extract(std::string fileName)=0;
 };
 
 

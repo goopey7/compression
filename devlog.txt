@@ -6,3 +6,14 @@ me from putting green eggs and ham into the source code :)
 
 Plan for tomorrow is to start and finish the decompressor for green eggs and ham, and then move onto a universal text
 compressor. Or maybe I'll make a universal file compressor??
+
+Tuesday (12/15/20)
+I'm fed up of tailoring my program to green eggs and ham. The compressed version is 917 characters while the original
+was 3117 characters. (Excluding new lines which were left unchanged anyway). I achieved this mainly through copying
+and pasting the same if statement for different strings and characters, not my finest work by any means. I may refactor
+and parse a config file which would reduce my GEAH_Compressor.cpp by at least 500 lines.
+
+I really want to be able to compress not just text, but any file. I'm not quite sure how I'd be able to read the binary
+stored in files, but I'm sure it's possible in C++. I'd also like to utilize Huffman encoding for the actual compression.
+
+I have a Calculus quiz that I should probably be studying for tomorrow, so I should probably stop for tonight.

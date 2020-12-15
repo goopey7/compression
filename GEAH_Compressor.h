@@ -14,6 +14,7 @@ public:
 	bool isValid();
 
 	void compress(std::string fileName) override;
+	void extract(std::string fileName) override;
 };
 
 
