@@ -25,8 +25,10 @@ class ReadAndWrite
 {
 public:
     static void getInputAsString(std::string& input);
-    static std::vector<std::string>* readFile(std::string inFileName);
-    static void writeFile(std::vector<std::string>* outFileContents,std::string outFileName);
+	static std::vector<std::string>* readFile(std::string inFileName);
+	static std::string readFileAsString(std::string inFileName);
+	static void writeFile(std::vector<std::string>* outFileContents,const std::string& outFileName);
+	static void writeFile(const std::string& outFileContents,const std::string& outFileName);
 };
 
 #endif //AUTHENTICATIONPROGRAM_READANDWRITE_H

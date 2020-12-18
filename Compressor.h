@@ -18,7 +18,7 @@ public:
 	std::vector<std::string>* file=nullptr;
 	std::vector<std::string>* compressedFile=nullptr;
 
-	void openFile(std::string fileName){file=ReadAndWrite::readFile(std::move(fileName));}
+	virtual void openFile(std::string fileName){file=ReadAndWrite::readFile(std::move(fileName));}
 
 	std::string charCount();
 

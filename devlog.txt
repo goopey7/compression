@@ -17,3 +17,31 @@ I really want to be able to compress not just text, but any file. I'm not quite 
 stored in files, but I'm sure it's possible in C++. I'd also like to utilize Huffman encoding for the actual compression.
 
 I have a Calculus quiz that I should probably be studying for tomorrow, so I should probably stop for tonight.
+
+Thursday (12/17/20)
+I haven't been feeling great these past couple of days. Don't think it's covid because I haven't left the house.
+Might just be all of this remote school taking its toll. Very much looking forward to break.
+
+(18:30)
+I've just had a 3 hour nap after a long Thursday. Since Mr. Feldman has cancelled my discrete math class tomorrow,
+the only class I have is CS Apps, and now the only obstacle between me and my month of cyberpunk 2077, I mean winter break,
+is this assignment :)
+
+Now I'm going to do a bit of digging online and see if people have managed to do any kind of universal compression in C++.
+I think 7-zip, a tool I use a lot, was made in C++ so I'll definitely take a peak at the source and pay close attention
+to how it reads and writes files.
+
+On second thought, I think I'm going to stick with doing Huffman compression with plaintext. At least for tonight.
+Maybe I'll get some second wind tomorrow and make a universal file compression program. You never know.
+
+Friday (12/18/20)
+
+(2:00)
+Managed to get Huffman compression working however I still don't know how to write the literal 1's and 0's into a file.
+Today I learned about the priority queue in C++ which is quite handy https://www.geeksforgeeks.org/priority-queue-in-cpp-stl/
+
+I am now able to compress and extract files, but you have to do them at the same time. I still have to write the tree to
+a file. Once I've done that which I'll do when I wake up or after CS apps, I should be able to compress and extract any
+text file. Only problem is that I'm currently writing the binary into files as a string which means that the compressed
+file is a lot larger than the original file. Once I learn how to write the 1's and 0's into a binary file, that file should
+be smaller than the original.

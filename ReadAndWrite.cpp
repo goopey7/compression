@@ -8,6 +8,15 @@ void ReadAndWrite::getInputAsString(std::string& input)
     std::getline(std::cin, input);
 }
 
+std::string ReadAndWrite::readFileAsString(std::string inFileName)
+{
+	std::ifstream inFile(inFileName);
+	std::string str;
+	while(std::getline(inFile,str))
+		str+='\n';
+	return str;
+}
+
 std::vector<std::string>* ReadAndWrite::readFile(std::string inFileName)
 {
     // read into our database line by line
@@ -19,7 +28,7 @@ std::vector<std::string>* ReadAndWrite::readFile(std::string inFileName)
     return lines;
 }
 
-void ReadAndWrite::writeFile(std::vector<std::string>* outFileContents, std::string outFileName)
+void ReadAndWrite::writeFile(std::vector<std::string>* outFileContents, const std::string& outFileName)
 {
     remove(outFileName.c_str());
     std::string outString;
@@ -32,4 +41,13 @@ void ReadAndWrite::writeFile(std::vector<std::string>* outFileContents, std::str
     outFile.open(outFileName,std::ios::out | std::ios::trunc);
     outFile << outString;
     outFile.close();
+}
+
+void ReadAndWrite::writeFile(const std::string& outFileContents, const std::string& outFileName)
+{
+	remove(outFileName.c_str());
+	std::fstream outFile;
+	outFile.open(outFileName,std::ios::out | std::ios::trunc);
+	outFile << outFileContents;
+	outFile.close();
 }
