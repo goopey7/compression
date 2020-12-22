@@ -62,12 +62,12 @@ void saveToFileRecursive(Node* node, FILE* fp)
 		saveToFileRecursive(node->getRight(),fp);
 	}
 }
-void HuffmanTree::saveToFile(const std::string& fileName)
+void HuffmanTree::saveToFile(int extraBits, const std::string& fileName)
 {
-	FILE *fp = fopen("tree.txt", "w");
+	FILE *fp = fopen(std::string(fileName).c_str(), "w");
 	saveToFileRecursive(root,fp);
 	fclose(fp);
-	std::string mapping;
+	std::string mapping=std::to_string(extraBits)+'\n';
 	for(auto pair : map)
 	{
 		char c=pair.first;

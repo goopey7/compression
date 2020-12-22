@@ -16,7 +16,7 @@ class HuffmanTree : public BinaryTree
 public:
 	HuffmanTree(char* sortedChars, int size, std::map<char,uint64_t> &frequency);
 	HuffmanTree(const std::string& fileName);
-	void saveToFile(const std::string& fileName);
+	void saveToFile(int extraBits, const std::string& fileName);
 };
 
 

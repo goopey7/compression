@@ -46,6 +46,9 @@ text file. Only problem is that I'm currently writing the binary into files as a
 file is a lot larger than the original file. Once I learn how to write the 1's and 0's into a binary file, that file should
 be smaller than the original.
 
+Later that day...
+Mr. Polizano extended the project a week! I'm going to take the weekend off and enjoy festivities.
+
 Monday (12/21/20)
 
 (12:00 -> 21:30)
@@ -54,6 +57,59 @@ working. So my program can reconstruct the huffman tree and the map of character
 is the fact that the encoded 1s and 0s are being represented as characters, not bits. So, the compressed file is much
 bigger than the original. Now I need to figure out how I could possibly manually write the bits of a file.
 
-
+https://stackoverflow.com/questions/1856514/writing-files-in-bit-form-to-a-file-in-c?rq=1
 After a bit of peeking at stackoverflow, it looks like you can't write bits individually to a file, but you can write
 a file byte by byte, so I'll need to construct bytes before writing to a file.
+
+Ok, just tried to implement this and now my 'compressed' file is way bigger. Made green eggs and ham 720 kb! Yikes.
+I managed to solve the problem, but I'm honestly not sure why. I can tell you what I did though. I was looping through
+the characters of the string 8 at a time and then I'd take a substring of 8 characters, convert them to integers and
+write them. I realized that the loop could be a bit problematic because not all strings are going to perfectly divide
+into 8 pieces, so I made the loop way simpler. Just loop through each character of the string and write it to the file.
+My problem disappeared.
+
+(22:00)
+Success! I have managed to write a binary file that is considerably smaller than the original file!
+So next challenge is to read the binary file bit by bit.
+
+Tuesday (12/22/20)
+(00:00)
+I can sort of read the file now! Everything is in tact until the end.
+
+(1:10)
+Now I'm running into a couple of other issues. First issue is that there is an extra character added to the
+end of the extracted text and it's because we are reading the extra 0s remaining in the last byte.
+So to combat this, the first line of my .mapping file will indicate the number of extra bits in the compressed file.
+The second issue is that my program crashes shortly after. Might be related to the same problem.
+
+(1:30)
+Cutting off the extra bits solved both the crash and the incorrect character at the end. Next I just need to write it to
+a file and compare with the original. Also, I'd like to create a GUI for this program, so once this all works I'm going
+to try to learn how to use qt which is said to be cross platform.
+
+(1:40)
+Ok now things are looking pretty good. I can open a file, compress it, and then extract it into a different file.
+However, the new line at the end of my green eggs and ham file is missing. This might be because of the way the program
+reads in the original file though.
+
+(2:05)
+Getting a bit tired, but I've just noticed that there is one very odd bug. After compressing and extracting green eggs
+and ham, the line "I do not like them anywhere" gets converted to:
+I do not like thet ana
+etaIwro eehooestnYike them anywhere
+
+I have no clue what is causing this since the rest of the file seems perfect from just looking at it. I don't like going
+to sleep with these issues. I'll test it with some other files before going to bed. Ok just tried it with the GNU license
+and same issue. Lines 144-145 should be:
+"such as by intimate data communication or control flow between those
+subprograms and other parts of the work."
+But line 144 becomes:
+"such as by intimate data communication or control flow seYn nhet aeAft rmdin ograms and other parts of the work."
+It combined two lines together with some seemingly random characters. Where did the capital 'A' come from?
+What's really annoying is that the majority of the file is correct so I have no idea why this is happening at the moment.
+
+So I guess I can't call this lossless even though it should be theoretically. And it retains most of it!
+
+(2:30)
+If I try to extract the file from memory (directly after compressing) as opposed to reading from the files, the extracted
+text is lossless and perfect. So, something is going wrong when I'm reading the files.

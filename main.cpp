@@ -5,8 +5,8 @@
 int main()
 {
 	TextCompressor compressor;
-	compressor.openFile("geah.txt");
-	compressor.compress("compressed.txt");
-	compressor.extract("extracted.txt");
+	compressor.openFile("gnu.txt");
+	compressor.compress("compressed.bin");
+	compressor.extract("compressed.bin");
 	return 0;
 }
