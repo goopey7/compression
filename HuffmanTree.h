@@ -11,8 +11,12 @@
 
 class HuffmanTree : public BinaryTree
 {
+	std::map<char,uint64_t> map;
+	void readFileRecursive(Node* &node, FILE* fp);
 public:
 	HuffmanTree(char* sortedChars, int size, std::map<char,uint64_t> &frequency);
+	HuffmanTree(const std::string& fileName);
+	void saveToFile(const std::string& fileName);
 };
 
 

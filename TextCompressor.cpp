@@ -129,32 +129,19 @@ void TextCompressor::compress(std::string fileName)
 		str += huffCode[c];
 	}
 	ReadAndWrite::writeFile(str,fileName);
-	std::string mapping;
-	std::string s;
-	for(int i=0;i<numUniqueChars;i++)
-	{
-		char c = charsSortedByLeastFrequency[i];
-		 s = std::string(1,c);
-		mapping+=  s + "*" + huffCode[charsSortedByLeastFrequency[i]]+'\n';
-	}
-	ReadAndWrite::writeFile(mapping,fileName+".mapping");
-
-	// traverse the Huffman Tree again and this time
-	// decode the encoded string
-	int index = -1;
-	std::cout << "\nDecoded string is: \n";
-	while (index < (int)str.size() - 2) {
-		decode(tree.root, index, str);
-	}
+	tree.saveToFile(fileName+".tree");
 }
 
 void TextCompressor::extract(std::string fileName)
 {
-	std::vector<std::string> v = *ReadAndWrite::readFile(nameOfFile+".mapping");
-	std::map<std::string,char> m;
-	for(auto & i : v)
+	HuffmanTree tree("tree.txt");
+	std::string str = ReadAndWrite::readFileAsString("compressed.txt");
+	// traverse the Huffman Tree again and this time
+	// decode the encoded string
+	int index = -1;
+	std::cout << "\nDecoded string is: \n";
+	while (index < (int)str.size() - 2)
 	{
-		m[i.substr(2)]=i[0];
+		decode(tree.root, index, str);
 	}
-
 }

@@ -45,3 +45,15 @@ a file. Once I've done that which I'll do when I wake up or after CS apps, I sho
 text file. Only problem is that I'm currently writing the binary into files as a string which means that the compressed
 file is a lot larger than the original file. Once I learn how to write the 1's and 0's into a binary file, that file should
 be smaller than the original.
+
+Monday (12/21/20)
+
+(12:00 -> 21:30)
+Made really good progress today. I spent all day today working on the project. Managed to get compression and extraction
+working. So my program can reconstruct the huffman tree and the map of characters. So now the only problem that remains
+is the fact that the encoded 1s and 0s are being represented as characters, not bits. So, the compressed file is much
+bigger than the original. Now I need to figure out how I could possibly manually write the bits of a file.
+
+
+After a bit of peeking at stackoverflow, it looks like you can't write bits individually to a file, but you can write
+a file byte by byte, so I'll need to construct bytes before writing to a file.

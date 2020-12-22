@@ -20,6 +20,8 @@ public:
 	Node(int inKey){key=inKey;}
 	Node* getLeft(){return left;}
 	Node* getRight(){return right;}
+	Node** getLeftDblPtr(){return &left;}
+	Node** getRightDblPtr(){return &right;}
 	int getKey(){return key;}
 	void setLeft(Node* inLeft){left=inLeft;}
 	void setRight(Node* inRight){right=inRight;}
