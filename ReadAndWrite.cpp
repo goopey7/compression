@@ -46,8 +46,7 @@ void ReadAndWrite::writeFile(std::vector<std::string>* outFileContents, const st
 void ReadAndWrite::writeFile(const std::string& outFileContents, const std::string& outFileName)
 {
 	remove(outFileName.c_str());
-	std::fstream outFile;
-	outFile.open(outFileName,std::ios::out | std::ios::trunc);
+	std::ofstream outFile(outFileName,std::ios::binary);
 	outFile << outFileContents;
 	outFile.close();
 }

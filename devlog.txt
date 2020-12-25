@@ -113,3 +113,31 @@ So I guess I can't call this lossless even though it should be theoretically. An
 (2:30)
 If I try to extract the file from memory (directly after compressing) as opposed to reading from the files, the extracted
 text is lossless and perfect. So, something is going wrong when I'm reading the files.
+
+(16:00)
+It could also be an issue with writing the file since the error occurs when the error comes up when reading the binary file.
+I tested reading the binary file right after compressing, so the same tree stored in RAM was used and I still got the issue.
+
+So something weird is happening when reading or writing the binary file.
+
+Thursday (12/24/20)
+
+(19:21)
+I've spent many more hours today and I have great news! I think I'm nearly done! I am not sure what was wrong with my
+first implementation of reading and writing the binary, but I managed to find a different technique online which is more
+C++ and makes use of the standard library. https://www.cplusplus.com/forum/general/119145/
+
+I need to spend time with my family since we do celebrate christmas and it is christmas eve, so I'm not going to be doing
+any gui for this project. I need to just make the UI I have nice and be satisfied with it.
+
+Also, my compressor class has been reading and writing to three different files, and since I am just simply out of time,
+it's going to stay that way and now my UI deals with the packaging into one file.
+
+Last thing to do is make sure that I can fulfill the requirements. I know I still need to calculate compression rate.
+And I should probably add a benchmark option to the main menu for green eggs and ham. The huffman compression algorithm
+took me ages to complete, so unfortunately I only have that and my silly green eggs and ham one.
+
+Also, I'm sure it would be pretty easy to get my program to read any file even binary ones, but I really don't have
+enough time to go venture there. I really need to finish this up right now.
+
+Created the benchmark

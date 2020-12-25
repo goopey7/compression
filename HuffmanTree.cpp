@@ -14,37 +14,40 @@ class comparator // this is used for our priority queue
 		// which forces our priority queue to behave as a min heap.
 {
 public:
+	// this is how we determine the order
 	bool operator() (Node* l, Node* r)
 	{
 		return l->getKey() > r->getKey();
 	}
 };
 
-HuffmanTree::HuffmanTree(char* sortedChars, int size, std::map<char, uint64_t> &frequency)
+HuffmanTree::HuffmanTree(std::map<char, uint64_t> &frequency)
 {
 	std::priority_queue<Node*,std::vector<Node*>,comparator> queue;
+
+	// loop through all pairs in the map and create nodes
 	for(auto pair : frequency)
 	{
 		Node* node = new Node(pair.second);
 		node->setChar(pair.first);
 		queue.push(node);
 	}
+	// determine children (remember the queue is already sorted)
 	while(queue.size()!=1)
 	{
-		Node* left = queue.top();
-		queue.pop();
+		Node* left = queue.top(); // top of the queue
+		queue.pop(); // remove from queue
 		Node* right = queue.top();
 		queue.pop();
 
 		// create new node with the two lowest frequencies
 		Node* newNode = new Node(left->getKey()+right->getKey());
-		newNode->setChar('\0'); // null char
+		newNode->setChar('\0'); // null char (we only care about the characters in the leaf nodes)
 		newNode->setLeft(left);
 		newNode->setRight(right);
 		queue.push(newNode);
 	}
 	root=queue.top();
-
 	map = frequency;
 }
 
@@ -54,7 +57,7 @@ void saveToFileRecursive(Node* node, FILE* fp)
 	{
 		fprintf(fp,"%d'%c'", -1,'\0');
 		return;
-	} // * represents a null node
+	} // -1 represents a null node
 	else
 	{
 		fprintf(fp,"%d'%c'",node->getKey(),node->getChar());
@@ -79,6 +82,7 @@ void HuffmanTree::saveToFile(int extraBits, const std::string& fileName)
 
 void HuffmanTree::readFileRecursive(Node* &node, FILE* fp)
 {
+	// reconstruct tree
 	int num;
 	char c;
 	if(!fscanf(fp,"%d'%c'",&num,&c)||num==-1)
@@ -105,4 +109,5 @@ HuffmanTree::HuffmanTree(const std::string& fileName)
 	FILE* fp = fopen(fileName.c_str(), "r");
 	root= nullptr;
 	readFileRecursive(root,fp);
+	fclose(fp);
 }

@@ -2,13 +2,13 @@
 // Created by Sam on 17/12/2020.
 //
 
-#ifndef COMPRESSION_TEXTCOMPRESSOR_H
-#define COMPRESSION_TEXTCOMPRESSOR_H
+#ifndef COMPRESSION_HUFFCOMPRESSOR_H
+#define COMPRESSION_HUFFCOMPRESSOR_H
 
 #include "Compressor.h"
 #include "BinaryTree.h"
 
-class TextCompressor : public Compressor
+class HuffCompressor : public Compressor
 {
 	BinaryTree* root;
 	std::string nameOfFile;
@@ -23,4 +23,4 @@ public:
 };
 
 
-#endif //COMPRESSION_TEXTCOMPRESSOR_H
+#endif //COMPRESSION_HUFFCOMPRESSOR_H
